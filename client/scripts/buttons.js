@@ -1,6 +1,6 @@
 var socket = io();
 
-socket.on('updateCounts', message => {
+socket.on('updateCounts', function(message) {
     renderButtonCounters(message);
 });
 
@@ -30,10 +30,18 @@ function renderButtonCounters(counts) {
 }
 
 function onReady() {
-    $('#singlePress').click(() => $.get('singlePress'));
-    $('#doublePress').click(() => $.get('doublePress'));
-    $('#longPress').click(() => $.get('longPress'));
-    $('#reset').click(() => $.get('reset'));
+    $('#singlePress').click(function() {
+        $.get('singlePress')
+    });
+    $('#doublePress').click(function() {
+        $.get('doublePress')
+    });
+    $('#longPress').click(function() {
+        $.get('longPress')
+    });
+    $('#reset').click(function() {
+        $.get('reset')
+    });
     $.get('buttonsState', renderButtonCounters);
 }
 

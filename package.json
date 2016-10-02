@@ -1,0 +1,20 @@
+{
+  "name": "iotbutton",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js",
+    "package": "./package.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "forever": "^0.15.2",
+    "isomorphic-fetch": "^2.2.1",
+    "socket.io": "^1.4.8"
+  },
+  "repository": "https://github.com/mduleone/iotbutton-starter"
+}

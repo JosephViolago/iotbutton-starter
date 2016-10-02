@@ -25,7 +25,8 @@ function renderButtonCounters(counts) {
     $('#content')
         .append($(`<div>Single Presses: ${counts.singlePress}</div>`))
         .append($(`<div>Double Presses: ${counts.doublePress}</div>`))
-        .append($(`<div>Long Presses: ${counts.longPress}</div>`));
+        .append($(`<div>Long Presses: ${counts.longPress}</div>`))
+        .append(counts.batteryVoltage ? $(`<div>Battery Voltage: ${counts.batteryVoltage}</div>`) : $(''));
 
 }
 

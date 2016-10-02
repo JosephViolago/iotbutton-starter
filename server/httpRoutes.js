@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const persistence = require('./persistence');
 
-function writeStateAndRespond(res, app, ioServer) {
+function writeStateAndRespond(req, res, app, ioServer) {
     const success = persistence.writeState(Object.assign({}, app.state));
     if (success) {
         ioServer.emit('updateCounts', app.state);
@@ -28,17 +28,20 @@ function mountRoutes(app, ioServer) {
 
     app.get('/singlePress', (req, res) => {
         app.state.singlePress += 1;
-        writeStateAndRespond(res, app, ioServer);
+        app.state.batteryVoltage = req.query.batteryVoltage;
+        writeStateAndRespond(req, res, app, ioServer);
     });
 
     app.get('/doublePress', (req, res) => {
         app.state.doublePress += 1;
-        writeStateAndRespond(res, app, ioServer);
+        app.state.batteryVoltage = req.query.batteryVoltage;
+        writeStateAndRespond(req, res, app, ioServer);
     });
 
     app.get('/longPress', (req, res) => {
         app.state.longPress += 1;
-        writeStateAndRespond(res, app, ioServer);
+        app.state.batteryVoltage = req.query.batteryVoltage;
+        writeStateAndRespond(req, res, app, ioServer);
     });
 
     app.get('/reset', (req, res) => {

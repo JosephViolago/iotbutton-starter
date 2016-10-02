@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs.extra');
 
 function mountState(app, path = __dirname + '/data/seed.json') {
     let raw;
@@ -24,8 +24,10 @@ function mountState(app, path = __dirname + '/data/seed.json') {
 }
 
 function writeState(state, path = __dirname + '/data/seed.json') {
+    const directory = path.slice(0, path.lastIndexOf('/'));
     try {
-        fs.writeFileSync(path, JSON.stringify(state, null, 4))
+        fs.mkdirp(directory);
+        fs.writeFileSync(path, JSON.stringify(state, null, 4));
         return true;
     } catch (e) {
         console.log('Write state error', e);

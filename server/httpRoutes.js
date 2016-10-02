@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const persistence = require('./persistence');
 
-function writeStateAndRespond(req, res, app, ioServer) {
+function writeStateAndRespond(res, app, ioServer) {
     const success = persistence.writeState(Object.assign({}, app.state));
     if (success) {
         ioServer.emit('updateCounts', app.state);
@@ -29,19 +29,19 @@ function mountRoutes(app, ioServer) {
     app.get('/singlePress', (req, res) => {
         app.state.singlePress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage;
-        writeStateAndRespond(req, res, app, ioServer);
+        writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/doublePress', (req, res) => {
         app.state.doublePress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage;
-        writeStateAndRespond(req, res, app, ioServer);
+        writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/longPress', (req, res) => {
         app.state.longPress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage;
-        writeStateAndRespond(req, res, app, ioServer);
+        writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/reset', (req, res) => {
@@ -50,10 +50,10 @@ function mountRoutes(app, ioServer) {
             {
                 singlePress: 0,
                 doublePress: 0,
-                longPress: 0,
+                longPress: 0
             }
         );
-        writeStateAndRespond(req, res, app, ioServer);
+        writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/buttonsState', (req, res) => {

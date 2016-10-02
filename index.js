@@ -17,7 +17,6 @@ socketListeners(ioServer);
 httpRoutes(app, ioServer);
 
 // Mount persistence
-app.dataPath = './data/seed.json';
 persistence.mountState(app);
 
 // Start server

@@ -28,19 +28,19 @@ function mountRoutes(app, ioServer) {
 
     app.get('/singlePress', (req, res) => {
         app.state.singlePress += 1;
-        app.state.batteryVoltage = req.query.batteryVoltage;
+        app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
         writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/doublePress', (req, res) => {
         app.state.doublePress += 1;
-        app.state.batteryVoltage = req.query.batteryVoltage;
+        app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
         writeStateAndRespond(res, app, ioServer);
     });
 
     app.get('/longPress', (req, res) => {
         app.state.longPress += 1;
-        app.state.batteryVoltage = req.query.batteryVoltage;
+        app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
         writeStateAndRespond(res, app, ioServer);
     });
 

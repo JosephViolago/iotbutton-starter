@@ -1,4 +1,5 @@
-var socket = io();
+'use strict';
+const socket = io();
 
 socket.on('updateCounts', function(message) {
     renderButtonCounters(message);

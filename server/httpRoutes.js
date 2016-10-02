@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const persistence = require('./persistence');
 
-function writeStateAndRespond(res, app, ioServer) {
+function writeStateEmitAndRespond(res, app, ioServer) {
     const success = persistence.writeState(Object.assign({}, app.state));
     if (success) {
         ioServer.emit('updateCounts', app.state);
@@ -17,31 +17,22 @@ function mountRoutes(app, ioServer) {
         res.json({hello: 'world'});
     });
 
-    app.get('/chat', (req, res) => {
-        res.sendFile(path.join(__dirname, './views/chat.html'));
-    });
-
-    app.get('/fakeMessage', (req, res) => {
-        ioServer.emit('message', {message: 'You hit an http endpoint!'});
-        res.json({status: 'ok'});
-    });
-
     app.get('/singlePress', (req, res) => {
         app.state.singlePress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
-        writeStateAndRespond(res, app, ioServer);
+        writeStateEmitAndRespond(res, app, ioServer);
     });
 
     app.get('/doublePress', (req, res) => {
         app.state.doublePress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
-        writeStateAndRespond(res, app, ioServer);
+        writeStateEmitAndRespond(res, app, ioServer);
     });
 
     app.get('/longPress', (req, res) => {
         app.state.longPress += 1;
         app.state.batteryVoltage = req.query.batteryVoltage || app.state.batteryVoltage;
-        writeStateAndRespond(res, app, ioServer);
+        writeStateEmitAndRespond(res, app, ioServer);
     });
 
     app.get('/reset', (req, res) => {
@@ -53,7 +44,7 @@ function mountRoutes(app, ioServer) {
                 longPress: 0
             }
         );
-        writeStateAndRespond(res, app, ioServer);
+        writeStateEmitAndRespond(res, app, ioServer);
     });
 
     app.get('/buttonsState', (req, res) => {

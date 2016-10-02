@@ -1,4 +1,3 @@
-'use strict';
 const socket = io();
 
 socket.on('updateCounts', function(message) {

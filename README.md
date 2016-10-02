@@ -1,7 +1,7 @@
 # Amazon IoT Button Starter Project
 Starter project for the Amazon IoT button.
 
-Goal: to serve as read out with statistics about a specific Amazon IoT Button.
+Goal: to provide a read out of statistics about a specific Amazon IoT Button.
 
 ## Running the project
 To run the webserver to record/report the statistics:
@@ -10,7 +10,7 @@ To run the webserver to record/report the statistics:
 listening on port 8888
 ```
 
-The default port is `8888`, but you can override that by setting `process.env.port`.
+The default port is `8888`. To change the port, copy `.env.dist` to `.env` and fill in the `port` variable.
 
 ## Packaging for deployment on AWS Lambda
 To package the skill to deploy to AWS Lambda

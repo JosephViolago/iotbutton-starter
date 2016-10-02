@@ -45,12 +45,15 @@ function mountRoutes(app, ioServer) {
     });
 
     app.get('/reset', (req, res) => {
-        app.state = {
-            singlePress: 0,
-            doublePress: 0,
-            longPress: 0,
-        };
-        writeStateAndRespond(res, app, ioServer);
+        app.state = Object.assign(
+            app.state,
+            {
+                singlePress: 0,
+                doublePress: 0,
+                longPress: 0,
+            }
+        );
+        writeStateAndRespond(req, res, app, ioServer);
     });
 
     app.get('/buttonsState', (req, res) => {

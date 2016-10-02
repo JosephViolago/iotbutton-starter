@@ -1,6 +1,6 @@
 'use strict';
+require('dotenv').config();
 var fetch = require('isomorphic-fetch');
-var env = require('./env');
 
 /**
  * The following JSON template shows what is sent as the payload:
@@ -21,10 +21,10 @@ exports.handler = function(event, context, callback) {
 
     switch (event.clickType) {
         case 'SINGLE':
-            return fetch(`${env.homeUrl}/singlePress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
+            return fetch(`${process.env.homeUrl}/singlePress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
         case 'DOUBLE':
-            return fetch(`${env.homeUrl}/doublePress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
+            return fetch(`${process.env.homeUrl}/doublePress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
         case 'LONG':
-            return fetch(`${env.homeUrl}/longPress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
+            return fetch(`${process.env.homeUrl}/longPress?batteryVoltage=${event.batteryVoltage}`, {method: 'GET'});
     }
 };

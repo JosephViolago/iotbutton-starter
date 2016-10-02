@@ -23,10 +23,10 @@ function renderButtonCounters(counts) {
     $('#content').html('');
 
     $('#content')
-        .append($(`<div>Single Presses: ${counts.singlePress}</div>`))
-        .append($(`<div>Double Presses: ${counts.doublePress}</div>`))
-        .append($(`<div>Long Presses: ${counts.longPress}</div>`))
-        .append(counts.batteryVoltage ? $(`<div>Battery Voltage: ${counts.batteryVoltage}</div>`) : $(''));
+        .append($(`<div>Single presses: ${counts.singlePress}</div>`))
+        .append($(`<div>Double presses: ${counts.doublePress}</div>`))
+        .append($(`<div>Long presses: ${counts.longPress}</div>`))
+        .append(counts.batteryVoltage ? $(`<div>Last reported battery voltage: ${counts.batteryVoltage}</div>`) : $(''));
 
 }
 

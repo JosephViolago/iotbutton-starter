@@ -14,7 +14,7 @@ function writeStateEmitAndRespond(res, app, ioServer) {
 
 function mountRoutes(app, ioServer) {
     app.get('/', (req, res) => {
-        res.json({hello: 'world'});
+        res.sendFile(path.join(__dirname, './views/buttons.html'));
     });
 
     app.get('/singlePress', (req, res) => {
@@ -52,7 +52,7 @@ function mountRoutes(app, ioServer) {
     });
 
     app.get('/buttons', (req, res) => {
-        res.sendFile(path.join(__dirname, './views/buttons.html'));
+        res.redirect('/');
     });
 
     app.use('/static', express.static('client'));

@@ -3,7 +3,7 @@ Starter project for the Amazon IoT button.
 
 Goal: to provide a read out of statistics about a specific Amazon IoT Button.
 
-## Running the project
+## Running the web server
 To run the webserver to record/report the statistics:
 ```
 > npm start

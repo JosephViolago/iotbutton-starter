@@ -24,9 +24,9 @@ To package the skill to deploy to AWS Lambda
 ## Todos
 These are the things on the top of my priority list
 
-0. Turn this in to a proper React app. Maybe use [React Redux Starter Kit](https://github.com/davezuko/react-redux-starter-kit)
+0. Turn this in to a proper React app. Use [Create React App](https://github.com/facebookincubator/create-react-app)
 1. Connect to a proper DB to store log/store button presses (brainstorm other things to store)
-2. Convert server from Express to [`Koa`](https://github.com/koajs/koa)
+2. Convert server from Express to [`Koa`](https://github.com/koajs/koa)?
 3. Design/implement metrics screens
 
 ## License
